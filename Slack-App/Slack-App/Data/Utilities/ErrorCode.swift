@@ -6,6 +6,7 @@
 //
 
 enum ErrorCode: Int {
+    
     // 成功
     case success = 200
     

@@ -21,7 +21,7 @@ protocol Requestable {
     var headers: HTTPHeaders { get }
     var parameters: [String: Any]? { get }
 
-    func request(completion: CompletionWithErrorCode)
+    func request(completion: @escaping CompletionWithErrorCode)
 }
 
 // MARK: - Default Implementation
@@ -41,30 +41,30 @@ extension Requestable {
 
 extension Requestable {
 
-    func request(completion: CompletionWithErrorCode) {
+    func request(completion: @escaping CompletionWithErrorCode) {
         AF.request(baseURL,
                    method: method,
                    parameters: parameters,
                    encoding: encoding,
                    headers: headers)
-        .validate() // ステータスコードの検証
+        .validate()
         .responseDecodable(of: ApiResponse<Response>.self) { response in
             switch response.result {
             case .success(let model):
-                print("パースした型: ", String(describing: type(of: model)))
+                print("🌟パースした型: ", String(describing: type(of: model)))
                 if let data = response.data, let encoded = String(data: data, encoding: .utf8) {
                     print("データ: ", encoded)
                 }
                 completion(.success, model)
             case .failure(let error):
                 print("リクエスト失敗: \(error.localizedDescription)")
-                
+
                 // ネットワークエラーの場合
                 if let afError = error.asAFError, afError.isSessionTaskError {
                     completion(.connectionFailed, nil)
                     return
                 }
-                
+
                 // HTTPステータスコードによるエラー判定
                 if let statusCode = response.response?.statusCode,
                    let httpErrorCode = ErrorCode(rawValue: statusCode) {
@@ -75,5 +75,4 @@ extension Requestable {
             }
         }
     }
-
 }
