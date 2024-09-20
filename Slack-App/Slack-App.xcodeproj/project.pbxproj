@@ -10,6 +10,9 @@
 		5E070FB42C9D485E002C69B0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E070FB32C9D485E002C69B0 /* RootViewController.swift */; };
 		5E070FB72C9D48E3002C69B0 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E070FB52C9D48E3002C69B0 /* SplashViewController.swift */; };
 		5E070FB82C9D48E3002C69B0 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E070FB62C9D48E3002C69B0 /* SplashViewController.xib */; };
+		5E41C94F2C9D5F7900724CBE /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E41C94E2C9D5F7900724CBE /* Requestable.swift */; };
+		5E41C9512C9D5FB800724CBE /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E41C9502C9D5FB800724CBE /* ApiResponse.swift */; };
+		5E41C9542C9D624E00724CBE /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E41C9532C9D624E00724CBE /* ErrorCode.swift */; };
 		5EA0D8192C9C19180015B40E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0D8182C9C19180015B40E /* AppDelegate.swift */; };
 		5EA0D81B2C9C19180015B40E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0D81A2C9C19180015B40E /* SceneDelegate.swift */; };
 		5EA0D8222C9C191B0015B40E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA0D8212C9C191B0015B40E /* Assets.xcassets */; };
@@ -21,6 +24,9 @@
 		5E070FB32C9D485E002C69B0 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		5E070FB52C9D48E3002C69B0 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5E070FB62C9D48E3002C69B0 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		5E41C94E2C9D5F7900724CBE /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		5E41C9502C9D5FB800724CBE /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		5E41C9532C9D624E00724CBE /* ErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
 		5EA0D8152C9C19180015B40E /* Slack-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slack-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA0D8182C9C19180015B40E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EA0D81A2C9C19180015B40E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +63,7 @@
 			children = (
 				5EA0D8182C9C19180015B40E /* AppDelegate.swift */,
 				5EA0D81A2C9C19180015B40E /* SceneDelegate.swift */,
+				5E41C9522C9D623A00724CBE /* Utilities */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -64,6 +71,7 @@
 		5E070FAC2C9D41C7002C69B0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5E41C94C2C9D5F1300724CBE /* ApiClient */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -117,6 +125,23 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
+		5E41C94C2C9D5F1300724CBE /* ApiClient */ = {
+			isa = PBXGroup;
+			children = (
+				5E41C94E2C9D5F7900724CBE /* Requestable.swift */,
+				5E41C9502C9D5FB800724CBE /* ApiResponse.swift */,
+			);
+			path = ApiClient;
+			sourceTree = "<group>";
+		};
+		5E41C9522C9D623A00724CBE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5E41C9532C9D624E00724CBE /* ErrorCode.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		5EA0D80C2C9C19170015B40E = {
 			isa = PBXGroup;
 			children = (
@@ -155,7 +180,6 @@
 				5F22FF4B6B16F678374E3620 /* Pods-Slack-App.debug.xcconfig */,
 				D5484026EA7CD9F3B4B34944 /* Pods-Slack-App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -274,8 +298,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E41C94F2C9D5F7900724CBE /* Requestable.swift in Sources */,
 				5EA0D8192C9C19180015B40E /* AppDelegate.swift in Sources */,
 				5E070FB42C9D485E002C69B0 /* RootViewController.swift in Sources */,
+				5E41C9542C9D624E00724CBE /* ErrorCode.swift in Sources */,
+				5E41C9512C9D5FB800724CBE /* ApiResponse.swift in Sources */,
 				5EA0D81B2C9C19180015B40E /* SceneDelegate.swift in Sources */,
 				5E070FB72C9D48E3002C69B0 /* SplashViewController.swift in Sources */,
 			);
